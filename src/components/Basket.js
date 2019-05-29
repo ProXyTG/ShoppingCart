@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import util from '../util'
+import util from '../util';
+import Checkout from './Checkout.js';
+
 export default class Basket extends Component {
     render() {
         const { cartItems } = this.props;
@@ -24,9 +26,9 @@ export default class Basket extends Component {
                             }
                         </ul>
 
-                        <b>Sum: {util.formatCurrency(cartItems.reduce((a, c) => (a + c.price * c.count), 0))}
+                        <b>Total: {util.formatCurrency(cartItems.reduce((a, c) => (a + c.price * c.count), 0))}
                         </b>
-                        <button onClick={() => alert('Name, email card')} className="btn btn-primary">checkout</button>
+                        <Checkout />
                     </div>
                 }
             </div>

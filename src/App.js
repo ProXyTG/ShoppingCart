@@ -8,7 +8,11 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], filteredProducts: [], cartItems: [] };
+    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [
+      {name: "20%OFF", value: 20},
+      {name: "5%OFF", value: 5},
+      {name: "20EUROFF", value: 20}
+    ] };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   }
@@ -51,6 +55,13 @@ class App extends Component {
   }
 
   render() {
+    let promotions = this.state.promotions.map(item => {
+		  return (
+			  <div key={item.name}>
+				  <button className="btn btn-success">{item.name}</button>
+			  </div>
+		  )
+	  });
      return (
        <div className="container">
          <h1>Shopping-Cart</h1>
@@ -64,7 +75,12 @@ class App extends Component {
            </div>
 
          </div>
-
+          <div className="row">
+            <div className="col-md-12">
+              <h3>Promotions</h3>
+              {promotions}
+            </div>
+          </div>
        </div>
      );
    }
