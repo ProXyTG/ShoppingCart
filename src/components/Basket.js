@@ -3,8 +3,27 @@ import util from '../util';
 import Checkout from './Checkout.js';
 
 export default class Basket extends Component {
+
+    
+
     render() {
         const { cartItems } = this.props;
+
+        let items = this.props.products.filter(i => {
+          return i.id === 4 || i.id === 2 ? console.log(i.price) : "";
+        });
+        console.log(items);
+
+
+        let itemOne = this.props.products.filter(i => {
+          return i.id === 4 ? console.log(i.price) : "";
+        });
+        console.log(itemOne);
+
+        let itemTwo = this.props.products.filter(i => {
+          return i.id === 2 ? console.log(i.price) : "";
+        });
+        console.log(itemOne);
 
         return (
             <div className="alert alert-info">

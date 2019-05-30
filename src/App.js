@@ -62,16 +62,24 @@ class App extends Component {
 			  </div>
 		  )
 	  });
+
      return (
        <div className="container">
          <h1>Shopping-Cart</h1>
          <hr />
          <div className="row">
            <div className="col-md-9">
-             <Products products={this.state.filteredProducts} handleAddToCart={this.handleAddToCart} />
+             <Products
+             products={this.state.filteredProducts}
+             handleAddToCart={this.handleAddToCart} />
+
            </div>
            <div className="col-md-3">
-             <Basket cartItems={this.state.cartItems} handleRemoveFromCart={this.handleRemoveFromCart} />
+             <Basket
+             cartItems={this.state.cartItems}
+             handleRemoveFromCart={this.handleRemoveFromCart}
+             products={this.state.filteredProducts}/>
+
            </div>
 
          </div>
