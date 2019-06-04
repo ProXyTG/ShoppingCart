@@ -10,7 +10,7 @@ export default class Basket extends Component {
         return (
             <div className="alert alert-info">
                 {cartItems.length === 0
-                    ? "Basket is empty" :
+                    ? "Basket is empty   " :
                     <div>You have {cartItems.length} items in the basket. <hr /></div>
                 }
                 {cartItems.length > 0 &&
@@ -26,17 +26,13 @@ export default class Basket extends Component {
                                 </li>))
                             }
                         </ul>
-
-                        <b>Total: {util.formatCurrency(cartItems.reduce((a, c) => (a + this.props.getPrice(c)), 0))}
-                        </b>
-                        <Checkout />
                     </div>
 
                 }
 
                 {cartPromotions.length === 0
-                    ? "No Promotions" :
-                    <div>You have {cartPromotions.length} items in the basket. <hr /></div>
+                    ? "No Promotions   " :
+                    <div>You have {cartPromotions.length} promotion in the basket. <hr /></div>
                 }
                 {cartPromotions.length > 0 &&
                     <div>
@@ -54,6 +50,12 @@ export default class Basket extends Component {
                     </div>
 
                 }
+
+                <b>Total: {util.formatCurrency(cartItems.reduce((a, c) => (a + this.props.getPrice(c)), 0))}
+                </b>
+                <button onClick={() =>
+                  }
+                  className="btn btn-primary">Checkout</button>
             </div>
         )
     }

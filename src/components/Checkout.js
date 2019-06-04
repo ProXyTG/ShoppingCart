@@ -5,7 +5,7 @@ export default class Checkout extends Component {
     return (
         <button onClick={() =>
           <div>
-            
+            alert("Hello! I am an alert box!!");
           </div>
         } className="btn btn-primary">Checkout</button>
     );
