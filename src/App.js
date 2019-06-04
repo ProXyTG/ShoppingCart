@@ -8,11 +8,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [
-      {name: "20%OFF", value: 20},
-      {name: "5%OFF", value: 5},
-      {name: "20EUROFF", value: 20}
-    ] };
+    this.state = { products: [], filteredProducts: [], cartItems: [], cartPromotions: [] };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
   }
@@ -25,6 +21,16 @@ class App extends Component {
     }));
     if (localStorage.getItem('cartItems')) {
       this.setState({ cartItems: JSON.parse(localStorage.getItem('cartItems')) });
+    }
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:8000/promotions").then(res => res.json())
+    .then(data => this.setState({
+      cartPromotions: data
+    }));
+    if (localStorage.getItem('cartPromotions')) {
+      this.setState({ cartPromotions: JSON.parse(localStorage.getItem('cartPromotions')) });
     }
   }
 
@@ -54,15 +60,25 @@ class App extends Component {
     });
   }
 
-  render() {
-    let promotions = this.state.promotions.map(item => {
-		  return (
-			  <div key={item.name}>
-				  <button className="btn btn-success">{item.name}</button>
-			  </div>
-		  )
-	  });
+  getPrice(item) {
+    var price = 0.0;
+    if(item.discount !== undefined){
+      price = item.price * (item.count % item.discount.qty);
+      if(item.count >= item.discount.qty){
+        price += item.discount.price * (Math.floor(item.count/item.discount.qty));
+      }
+    }else{
+        price = item.count * item.price;
+    }
+    console.log(price);
+    return price;
+  }
 
+  handleAddPromotions(e, item) {
+    this.setState()
+  }
+
+  render() {
      return (
        <div className="container">
          <h1>Shopping-Cart</h1>
@@ -76,6 +92,7 @@ class App extends Component {
            </div>
            <div className="col-md-3">
              <Basket
+             getPrice={this.getPrice}
              cartItems={this.state.cartItems}
              handleRemoveFromCart={this.handleRemoveFromCart}
              products={this.state.filteredProducts}/>
@@ -83,12 +100,6 @@ class App extends Component {
            </div>
 
          </div>
-          <div className="row">
-            <div className="col-md-12">
-              <h3>Promotions</h3>
-              {promotions}
-            </div>
-          </div>
        </div>
      );
    }

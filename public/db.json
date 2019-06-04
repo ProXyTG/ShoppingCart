@@ -11,7 +11,11 @@
       "id": 2,
       "title": "Motion Sensor",
       "price": 24.99,
-      "isFreeShipping": true
+      "isFreeShipping": true,
+      "discount": {
+        "qty": 3,
+        "price": 65.0
+      }
     },
 
     {
@@ -25,7 +29,11 @@
       "id": 4,
       "title": "Smoke Sensor",
       "price": 19.99,
-      "isFreeShipping": false
+      "isFreeShipping": false,
+      "discount": {
+        "qty": 2,
+        "price": 35.0
+      }
     },
 
     {
@@ -33,6 +41,29 @@
       "title": "Water Leak Sensor",
       "price": 14.99,
       "isFreeShipping": false
+    }
+  ],
+
+  "promotions": [
+    {
+      "name": "20%OFF",
+      "type": "%",
+      "value": 0.2,
+      "solo": true
+    },
+
+    {
+      "name": "5%OFF",
+      "type": "%",
+      "value": 0.05,
+      "solo": false
+    },
+
+    {
+      "name": "20EUFOFF",
+      "type": "-",
+      "value": 20.0,
+      "solo": false
     }
   ]
 }
