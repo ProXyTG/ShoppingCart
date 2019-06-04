@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Products from './components/Products';
 import Basket from './components/Basket';
+import Promotions from './components/Promotions';
 
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], filteredProducts: [], cartItems: [], cartPromotions: [] };
+    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [], cartPromotions: [] };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
+    this.handleAddPromotions = this.handleAddPromotions.bind(this);
   }
 
   componentWillMount() {
@@ -27,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     fetch("http://localhost:8000/promotions").then(res => res.json())
     .then(data => this.setState({
-      cartPromotions: data
+      promotions: data,
     }));
     if (localStorage.getItem('cartPromotions')) {
       this.setState({ cartPromotions: JSON.parse(localStorage.getItem('cartPromotions')) });
@@ -74,8 +76,18 @@ class App extends Component {
     return price;
   }
 
-  handleAddPromotions(e, item) {
-    this.setState()
+  handleAddPromotions (e, promotion) {
+    this.setState(state=>{
+      const cartPromotions = state.cartPromotions;
+      let promotionAllreadyInCart= false;
+      cartPromotions.forEach(item => {
+        if(item.id===promotion.id){
+          promotionAllreadyInCart = true;
+        }
+      });
+      localStorage.setItem("cartPromotions", JSON.stringify(cartPromotions));
+      return cartPromotions;
+    })
   }
 
   render() {
@@ -84,20 +96,25 @@ class App extends Component {
          <h1>Shopping-Cart</h1>
          <hr />
          <div className="row">
+
            <div className="col-md-9">
              <Products
              products={this.state.filteredProducts}
              handleAddToCart={this.handleAddToCart} />
-
            </div>
+
            <div className="col-md-3">
              <Basket
              getPrice={this.getPrice}
              cartItems={this.state.cartItems}
              handleRemoveFromCart={this.handleRemoveFromCart}
              products={this.state.filteredProducts}/>
+            </div>
 
-           </div>
+          <div className="col-md-4">
+            <Promotions
+            promotions={this.state.promotions} />
+          </div>
 
          </div>
        </div>
