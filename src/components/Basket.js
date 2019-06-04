@@ -5,7 +5,7 @@ import Checkout from './Checkout.js';
 export default class Basket extends Component {
 
     render() {
-        const { cartItems } = this.props;
+        const { cartItems, cartPromotions } = this.props;
 
         return (
             <div className="alert alert-info">
@@ -31,6 +31,28 @@ export default class Basket extends Component {
                         </b>
                         <Checkout />
                     </div>
+
+                }
+
+                {cartPromotions.length === 0
+                    ? "No Promotions" :
+                    <div>You have {cartPromotions.length} items in the basket. <hr /></div>
+                }
+                {cartPromotions.length > 0 &&
+                    <div>
+                        <ul style={{ marginLeft: -25 }}>
+                            {cartPromotions.map(item => (
+                                <li key={item.id}>
+                                    <b>{item.name}</b>
+                                    <button style={{ float: 'right' }} className="btn btn-danger btn-xs"
+                                        onClick={(e) => this.props.handleRemovePromotions(e, item)}>X</button>
+                                    <br />
+                                    {item.count} X {util.formatCurrency(item.value)}
+                                </li>))
+                            }
+                        </ul>
+                    </div>
+
                 }
             </div>
         )

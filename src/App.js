@@ -86,6 +86,9 @@ class App extends Component {
           promotionAllreadyInCart = true;
         }
       });
+      if(!promotionAllreadyInCart){
+        cartPromotions.push({...promotion, count:1});
+      }
       localStorage.setItem("cartPromotions", JSON.stringify(cartPromotions));
       return cartPromotions;
     })
@@ -118,7 +121,8 @@ class App extends Component {
              cartItems={this.state.cartItems}
              handleRemoveFromCart={this.handleRemoveFromCart}
              products={this.state.filteredProducts}
-             handleRemovePromotions = {this.handleRemovePromotions} />
+             handleRemovePromotions = {this.handleRemovePromotions}
+             cartPromotions={this.state.cartPromotions} />
             </div>
 
           <div className="col-md-4">
