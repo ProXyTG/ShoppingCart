@@ -13,6 +13,7 @@ class App extends Component {
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
     this.handleAddPromotions = this.handleAddPromotions.bind(this);
+    this.handleRemovePromotions = this.handleRemovePromotions.bind(this);
   }
 
   componentWillMount() {
@@ -90,6 +91,14 @@ class App extends Component {
     })
   }
 
+  handleRemovePromotions(e, promotion) {
+    this.setState(state=>{
+      const cartPromotions = state.cartPromotions.filter(elm => elm.id !== promotion.id);
+      localStorage.setItem('cartPromotions', cartPromotions);
+      return {cartPromotions};
+    });
+  }
+
   render() {
      return (
        <div className="container">
@@ -108,12 +117,14 @@ class App extends Component {
              getPrice={this.getPrice}
              cartItems={this.state.cartItems}
              handleRemoveFromCart={this.handleRemoveFromCart}
-             products={this.state.filteredProducts}/>
+             products={this.state.filteredProducts}
+             handleRemovePromotions = {this.handleRemovePromotions} />
             </div>
 
           <div className="col-md-4">
             <Promotions
-            promotions={this.state.promotions} />
+            promotions={this.state.promotions}
+            handleAddPromotions={this.handleAddPromotions} />
           </div>
 
          </div>

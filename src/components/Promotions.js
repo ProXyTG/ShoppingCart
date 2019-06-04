@@ -12,7 +12,6 @@ export default class Promotions extends Component {
             </p>
           </a>
           <div>
-            <b>{util.formatCurrency(promotion.value)}</b>
             <button className="btn btn-primary"
               onClick={(e)=>this.props.handleAddPromotions(e, promotion)}>
               Add
