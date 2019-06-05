@@ -43,7 +43,6 @@ export default class Basket extends Component {
                                     <button style={{ float: 'right' }} className="btn btn-danger btn-xs"
                                         onClick={(e) => this.props.handleRemovePromotions(e, item)}>X</button>
                                     <br />
-                                    {item.count} X {util.formatCurrency(item.value)}
                                 </li>))
                             }
                         </ul>
@@ -53,9 +52,7 @@ export default class Basket extends Component {
 
                 <b>Total: {util.formatCurrency(cartItems.reduce((a, c) => (a + this.props.getPrice(c)), 0))}
                 </b>
-                <button onClick={() =>
-                  }
-                  className="btn btn-primary">Checkout</button>
+
             </div>
         )
     }
