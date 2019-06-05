@@ -77,6 +77,24 @@ class App extends Component {
     return price;
   }
 
+  applyPromotions(promotions, price) {
+    let ret= price;
+    promotions.forEach(item => {
+        if(item.type === "-") {
+          ret -= item.value;
+        }
+      })
+
+      let discount = 0.0;
+      promotions.forEach(item => {
+        if(item.type === "%") {
+          discount += item.value;
+        }
+      })
+      ret *= (1.0-discount);
+    return ret;
+  }
+
   handleAddPromotions (e, promotion) {
     this.setState(state=>{
       let promotionAllreadyInCart= false;
@@ -123,6 +141,7 @@ class App extends Component {
 
            <div className="col-md-3">
              <Basket
+             applyPromotions= {this.applyPromotions}
              getPrice={this.getPrice}
              cartItems={this.state.cartItems}
              handleRemoveFromCart={this.handleRemoveFromCart}
