@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
+import Modal from 'react-modal';
 import logo from './logo.svg';
 import Products from './components/Products';
 import Basket from './components/Basket';
 import Promotions from './components/Promotions';
+import Checkout from './components/Checkout';
 
 import './App.css';
 
 class App extends Component {
-  constructor(props, context) {
-    super(props, context);
-    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [], cartPromotions: [] };
+  constructor(props) {
+    super(props);
+    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [], cartPromotions: [], showModal: false };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
     this.handleAddPromotions = this.handleAddPromotions.bind(this);
     this.handleRemovePromotions = this.handleRemovePromotions.bind(this);
+    this.handleOpenModal= this.handleOpenModal.bind(this);
+    this.handleCloseModal= this.handleCloseModal.bind(this);
   }
 
   componentWillMount() {
@@ -35,6 +39,14 @@ class App extends Component {
     if (localStorage.getItem('cartPromotions')) {
       this.setState({ cartPromotions: JSON.parse(localStorage.getItem('cartPromotions')) });
     }
+  }
+
+  handleOpenModal(){
+    this.setState({showModal: true});
+  }
+
+  handleCloseModal(){
+    this.setState({showModal: false});
   }
 
   handleAddToCart(e, product) {

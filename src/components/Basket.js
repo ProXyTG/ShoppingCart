@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import util from '../util';
+import Modal from 'react-modal';
 import Checkout from './Checkout.js';
 
 export default class Basket extends Component {
 
     render() {
-        const { cartItems, cartPromotions } = this.props;
+        const { cartItems, cartPromotions, } = this.props;
 
         return (
             <div className="alert alert-info">
@@ -53,7 +54,21 @@ export default class Basket extends Component {
                 <b>Total: {util.formatCurrency(this.props.applyPromotions(cartPromotions,cartItems.reduce((a, c) => (a + this.props.getPrice(c)), 0)))}
                 </b>
 
-            </div>
+                  <div>
+                  <button onClick={this.props.handleOpenModal}>Trigger Modal</button>
+                  <Modal
+                  isOpen={this.props.showModal}
+                    contentLabel="onRequestClose Example"
+                    onRequestClose={this.props.handleCloseModal}
+                    className="Modal"
+                    overlayClassName="Overlay"
+                    >
+                    <p>Modal text!</p>
+                    <button onClick={this.props.handleCloseModal}>Close Modal</button>
+                    </Modal>
+                    </div>
+
+              </div>
         )
     }
 }
