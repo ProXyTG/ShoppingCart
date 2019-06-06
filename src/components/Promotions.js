@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import util from '../util.js';
 
 export default class Promotions extends Component {
   render() {
     const promotionItems = this.props.promotions.map( promotion =>
-      <div className ="col-md-4">
+      <div key={promotion.name} className ="col-md-4">
         <div className = "thumbnail text-center">
           <a href={`#${promotion.id}`} onClick={(e)=>this.props.handleAddPromotions(e, promotion)}>
             <p>

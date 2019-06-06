@@ -4,7 +4,7 @@ import util from '../util.js';
 export default class Products extends Component {
   render() {
     const productItems = this.props.products.map( product =>
-      <div className ="col-md-4">
+      <div key={product.title} className ="col-md-4">
         <div className = "thumbnail text-center">
           <a href={`#${product.id}`} onClick={(e)=>this.props.handleAddToCart(e, product)}>
             <p>

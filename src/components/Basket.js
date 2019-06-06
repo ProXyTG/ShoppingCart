@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import util from '../util';
 import Modal from 'react-modal';
-import Checkout from './Checkout.js';
 Modal.setAppElement('#root');
 
 export default class Basket extends Component {

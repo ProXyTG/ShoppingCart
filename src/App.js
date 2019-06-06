@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import Modal from 'react-modal';
-import logo from './logo.svg';
 import Products from './components/Products';
 import Basket from './components/Basket';
 import Promotions from './components/Promotions';
-import Checkout from './components/Checkout';
 
 import './App.css';
 
@@ -118,10 +115,10 @@ class App extends Component {
       let cartPromotions = this.state.cartPromotions;
 
       if(!promotionAllreadyInCart){
-        if(promotion.solo) {
-          cartPromotions= [{...promotion, count:1}];
+        if(!promotion.solo) {
+           this.setState({cartPromotions: [promotion] });
         }else {
-          cartPromotions.push({...promotion, count:1});
+           cartPromotions.push({...promotion, count:1});
         }
       }
       localStorage.setItem("cartPromotions", JSON.stringify(cartPromotions));
