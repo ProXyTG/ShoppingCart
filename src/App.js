@@ -153,6 +153,9 @@ class App extends Component {
 
            <div className="col-md-3">
              <Basket
+             handleCloseModal={this.handleCloseModal}
+             handleOpenModal={this.handleOpenModal}
+             showModal= {this.state.showModal}
              applyPromotions= {this.applyPromotions}
              getPrice={this.getPrice}
              cartItems={this.state.cartItems}
