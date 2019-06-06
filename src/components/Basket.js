@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import util from '../util';
 import Modal from 'react-modal';
 import Checkout from './Checkout.js';
+Modal.setAppElement('#root');
 
 export default class Basket extends Component {
 
@@ -55,7 +56,8 @@ export default class Basket extends Component {
                 </b>
 
                   <div>
-                  <button onClick={this.props.handleOpenModal}>Trigger Modal</button>
+                  <button style={{ float: 'right' }} className="btn btn-danger btn-xs"
+                          onClick={this.props.handleOpenModal}>Trigger Modal</button>
                   <Modal
                   isOpen={this.props.showModal}
                     contentLabel="onRequestClose Example"
@@ -64,7 +66,8 @@ export default class Basket extends Component {
                     overlayClassName="Overlay"
                     >
                     <p>Modal text!</p>
-                    <button onClick={this.props.handleCloseModal}>Close Modal</button>
+                    <button style={{ float: 'right' }} className="btn btn-danger btn-xs"
+                    onClick={this.props.handleCloseModal}>Close Modal</button>
                     </Modal>
                     </div>
 
