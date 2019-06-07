@@ -4,14 +4,12 @@
       "id": 1,
       "title": "Smart Hub",
       "price": 49.99,
-      "isFreeShipping": true
     },
 
     {
       "id": 2,
       "title": "Motion Sensor",
       "price": 24.99,
-      "isFreeShipping": true,
       "discount": {
         "qty": 3,
         "price": 65.0
@@ -22,14 +20,12 @@
       "id": 3,
       "title": "Wireless Camera",
       "price": 99.99,
-      "isFreeShipping": true
     },
 
     {
       "id": 4,
       "title": "Smoke Sensor",
       "price": 19.99,
-      "isFreeShipping": false,
       "discount": {
         "qty": 2,
         "price": 35.0
@@ -40,7 +36,6 @@
       "id": 5,
       "title": "Water Leak Sensor",
       "price": 14.99,
-      "isFreeShipping": false
     }
   ],
 
@@ -58,7 +53,7 @@
       "name": "5%OFF",
       "type": "%",
       "value": 0.05,
-      "solo": false
+      "solo":false
     },
 
     {
@@ -66,7 +61,7 @@
       "name": "20EUFOFF",
       "type": "-",
       "value": 20.0,
-      "solo": false
+      "solo":false
     }
   ]
 }

@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [], cartPromotions: [], showModal: false };
+    this.state = { products: [], filteredProducts: [], cartItems: [], promotions: [], cartPromotions: [], showModal: false,};
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.handleRemoveFromCart = this.handleRemoveFromCart.bind(this);
     this.handleAddPromotions = this.handleAddPromotions.bind(this);
@@ -115,14 +115,13 @@ class App extends Component {
       let cartPromotions = this.state.cartPromotions;
 
       if(!promotionAllreadyInCart){
-        if(!promotion.solo) {
-           this.setState({cartPromotions: [promotion] });
+        if(promotion.solo) {
+           this.setState({cartPromotions: [{...promotion, count:1}]});
         }else {
-           cartPromotions.push({...promotion, count:1});
+          this.setState({cartPromotions: [{...promotion, count:1}]});
         }
       }
       localStorage.setItem("cartPromotions", JSON.stringify(cartPromotions));
-      console.log({cartPromotions});
       return cartPromotions;
     })
   }
