@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Smart Hub",
-      "price": 49.99,
+      "price": 49.99
     },
 
     {
@@ -19,13 +19,13 @@
     {
       "id": 3,
       "title": "Wireless Camera",
-      "price": 99.99,
+      "price": 99.99
     },
 
     {
       "id": 4,
       "title": "Smoke Sensor",
-      "price": 19.99,
+      "price": 26.99,
       "discount": {
         "qty": 2,
         "price": 35.0
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "title": "Water Leak Sensor",
-      "price": 14.99,
+      "price": 34.99
     }
   ],
 

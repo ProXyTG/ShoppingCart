@@ -140,33 +140,36 @@ class App extends Component {
          <h1>Shopping-Cart</h1>
          <hr />
          <div className="row">
-
            <div className="col-md-9">
-             <Products
-             products={this.state.filteredProducts}
-             handleAddToCart={this.handleAddToCart} />
-           </div>
-
-           <div className="col-md-3">
-             <Basket
-             handleCloseModal={this.handleCloseModal}
-             handleOpenModal={this.handleOpenModal}
-             showModal= {this.state.showModal}
-             applyPromotions= {this.applyPromotions}
-             getPrice={this.getPrice}
-             cartItems={this.state.cartItems}
-             handleRemoveFromCart={this.handleRemoveFromCart}
-             products={this.state.filteredProducts}
-             handleRemovePromotions = {this.handleRemovePromotions}
-             cartPromotions={this.state.cartPromotions} />
+            <div>
+              <Products
+                products={this.state.filteredProducts}
+                handleAddToCart={this.handleAddToCart} 
+              />
             </div>
-
-          <div className="col-md-4">
-            <Promotions
-            promotions={this.state.promotions}
-            handleAddPromotions={this.handleAddPromotions} />
+            <div className="promotions-container">
+              <Promotions
+                promotions={this.state.promotions}
+                handleAddPromotions={this.handleAddPromotions} 
+              />
+            </div>
           </div>
-
+          <div className="col-md-3">
+           <div>
+             <Basket
+               handleCloseModal={this.handleCloseModal}
+               handleOpenModal={this.handleOpenModal}
+               showModal= {this.state.showModal}
+               applyPromotions= {this.applyPromotions}
+               getPrice={this.getPrice}
+               cartItems={this.state.cartItems}
+               handleRemoveFromCart={this.handleRemoveFromCart}
+               products={this.state.filteredProducts}
+               handleRemovePromotions = {this.handleRemovePromotions}
+               cartPromotions={this.state.cartPromotions} 
+             />
+            </div>
+          </div>
          </div>
        </div>
      );

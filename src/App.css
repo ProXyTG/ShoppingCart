@@ -31,3 +31,16 @@
     transform: rotate(360deg);
   }
 }
+
+.align-butons-and-price {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-butons-and-price b {
+  margin-bottom: 5%;
+}
+
+.promotions-container {
+  margin-top: 5%;
+}
